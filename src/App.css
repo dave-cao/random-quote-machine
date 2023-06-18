@@ -2,9 +2,10 @@
 
 * {
   transition: background-color 2s ease;
+  font-family: "Cormorant Garamond", sans-serif;
 }
 
-.quote-box {
+#quote-box {
   border: 4px solid #333;
   background-color: #ffffff;
   padding: 20px 40px; /* Added vertical (20px) and horizontal (40px) padding */
@@ -37,7 +38,22 @@
   border-color: #618488;
 }
 
+.navbar-padding {
+  padding-left: 20px;
+}
+
+.clickableButtons {
+  display: flex;
+  justify-content: space-evenly;
+}
+
 /* Add the following styles to override Bootstrap's default button styles for the active state */
 
-.btn-primary {
+@media (max-width: 576px) {
+  .quote-text {
+    font-size: 1.3rem;
+  }
+  #quote-box {
+    padding: 10px;
+  }
 }
