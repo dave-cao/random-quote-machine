@@ -47,6 +47,10 @@
   justify-content: space-evenly;
 }
 
+button.navbar-toggler {
+  margin-right: 10px;
+}
+
 /* Add the following styles to override Bootstrap's default button styles for the active state */
 
 @media (max-width: 576px) {

@@ -9,7 +9,7 @@ function TweetButton({ handleClick, color, quote }) {
   return (
     <div className="text-center mt-auto">
       <a
-        href={`https://twitter.com/intent/tweet?text=❝${quote.content}❞`}
+        href={`https://twitter.com/intent/tweet?text=❝${quote.content}❞ ~ ${quote.author}`}
         target="_blank"
         id="tweet-quote"
         className="btn btn-primary btn-lg btn-block"
