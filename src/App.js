@@ -130,6 +130,15 @@ const COLORS = [
   "#114b5f",
   "#e0b0ff",
   "#5d2f27",
+  "#9C6398",
+  "#6D8ACE",
+  "#121D31",
+  "#AE3F5A",
+  "#2E1D2D",
+  "#78314E",
+  "#B9BCD5",
+  "#4D4D83",
+  "#28294C",
 ];
 
 export default App;
