@@ -16,7 +16,7 @@ function TagSelector({ tags, handleSelection }) {
     <select
       className="form-select form-select-sm"
       style={{
-        width: "100px",
+        width: "135px",
         padding: "8px 16px",
       }}
       onChange={(e) => {
