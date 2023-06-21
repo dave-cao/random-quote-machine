@@ -30,6 +30,7 @@
   font-size: 14px; /* Decreased font size for a smaller button */
   padding: 8px 16px; /* Adjusted padding for a smaller button */
   margin-top: 20px;
+  margin-right: 5px;
   transition: background-color 2s ease;
 }
 
@@ -49,6 +50,15 @@
 
 button.navbar-toggler {
   margin-right: 10px;
+}
+
+.tag-selector-container {
+  height: auto;
+  position: relative;
+}
+
+select {
+  float: right;
 }
 
 /* Add the following styles to override Bootstrap's default button styles for the active state */

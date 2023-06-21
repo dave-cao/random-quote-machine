@@ -4,6 +4,31 @@ import { useEffect, useState } from "react";
 import Footer from "./Footer";
 import NavBar from "./Navbar";
 
+function TagSelector({ tags, handleSelection }) {
+  const options = tags.map((tag) => {
+    return (
+      <option key={tag._id} value={tag.slug}>
+        {tag.name}
+      </option>
+    );
+  });
+  return (
+    <select
+      className="form-select form-select-sm"
+      style={{
+        width: "100px",
+        padding: "8px 16px",
+      }}
+      onChange={(e) => {
+        handleSelection(e.target.value);
+      }}
+    >
+      <option defaultValue>All</option>
+      {options}
+    </select>
+  );
+}
+
 function TweetButton({ handleClick, color, quote }) {
   color === "#f2f2f2" ? (color = "#5A5A5A") : (color = color);
   return (
@@ -54,20 +79,40 @@ function Quote({ quote }) {
 
 function QuoteBox({ changeBackgroundColor, backgroundColor }) {
   const [quote, setQuote] = useState({});
+  const [tags, setTags] = useState([]);
+  const [currentTag, setCurrentTag] = useState("All");
+
+  const updateCurrentTag = (tag) => {
+    setCurrentTag(tag);
+  };
+
   const updateQuote = () => {
+    let endpoint = "https://api.quotable.io/quotes/random";
+
+    currentTag === "All"
+      ? (endpoint = endpoint)
+      : (endpoint = `${endpoint}?tags=${currentTag}`);
+
     axios
-      .get("https://api.quotable.io/quotes/random")
+      .get(endpoint)
       .then((data) => {
-        console.log(data.data[0]);
+        // console.log(data.data[0]);
         setQuote(data.data[0]);
       })
       .catch((error) => {
-        console.log(error);
+        // console.log(error);
         setQuote({ content: "Error with API!", author: "Contact David :)" });
       });
   };
 
+  const updateTags = () => {
+    axios.get("https://api.quotable.io/tags").then((data) => {
+      setTags(data.data);
+    });
+  };
+
   useEffect(updateQuote, []);
+  useEffect(updateTags, []);
 
   return (
     <div
@@ -79,10 +124,14 @@ function QuoteBox({ changeBackgroundColor, backgroundColor }) {
         width: "auto",
       }}
     >
+      <div className="tag-selector-container">
+        <TagSelector tags={tags} handleSelection={updateCurrentTag} />
+      </div>
       <div className="container m-auto">
         <Quote quote={quote} color={backgroundColor} />
         <div className="clickableButtons">
           <TweetButton quote={quote} />
+
           <NewQuoteButton
             color={backgroundColor}
             handleClick={() => {
@@ -143,8 +192,7 @@ const COLORS = [
 
 export default App;
 
-// HIERARCY
-// Quote Box
-//  - Quote
-//  - quote author
-//  - new quote button
+// technology
+// famous-quotes
+// history
+// civil-rights
